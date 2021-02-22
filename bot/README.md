@@ -1,6 +1,6 @@
-## How to create your own bot
+# How to create your own bot
 
-# Preparation
+## Preparation
 ```
 mkdir example_bot
 cd example_bot
@@ -24,7 +24,7 @@ add_executable(test ${SOURCES})
 target_link_libraries(test -Lbuild cpp_vk_lib pthread curl curlpp -L../cpp_vk_lib/dependencies/simdjson simdjson)
 ```
 
-# Common structure of bot
+## Common structure of bot
 ```
 ├── CMakeLists.txt
 ├── commands
@@ -41,7 +41,7 @@ target_link_libraries(test -Lbuild cpp_vk_lib pthread curl curlpp -L../cpp_vk_li
 ├── main.cpp
 ```
 
-# Creating CMakeLists
+## Creating CMakeLists
 Here is example CMake script to make bot and library work together:
 ```
 cmake_minimum_required(VERSION 3.9)
