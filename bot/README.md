@@ -1,29 +1,5 @@
 # How to create your own bot
 
-## Preparation
-```
-mkdir example_bot
-cd example_bot
-git clone https://github.com/duonumerouno/cpp_vk_lib.git
-```
-
-Of cource, you can add library as a submodule in your project.
-Next, you should to create `bot` directory.
-Example CMakeLists:
-```
-include_directories(../cpp_vk_lib/lib/include)
-include_directories(../cpp_vk_lib/dependencies/simdjson/include)
-include_directories(../cpp_vk_lib/dependencies)
-
-set(SOURCES
-    # Your source files.
-    main.cpp
-)
-add_executable(test ${SOURCES})
-
-target_link_libraries(test -Lbuild cpp_vk_lib pthread curl curlpp -L../cpp_vk_lib/dependencies/simdjson simdjson)
-```
-
 ## Common structure of bot
 ```
 ├── CMakeLists.txt
@@ -40,6 +16,30 @@ target_link_libraries(test -Lbuild cpp_vk_lib pthread curl curlpp -L../cpp_vk_li
 |   └── string_utils.hpp
 ├── main.cpp
 ```
+## Preparation
+```
+mkdir example_bot
+cd example_bot
+git clone https://github.com/duonumerouno/cpp_vk_lib.git
+```
+
+Of cource, you can add library as a submodule in your project.
+
+Next, you should to create `bot` directory with following script
+```
+include_directories(../cpp_vk_lib/lib/include)
+include_directories(../cpp_vk_lib/dependencies/simdjson/include)
+include_directories(../cpp_vk_lib/dependencies)
+
+set(SOURCES
+    # Your source files.
+    main.cpp
+)
+add_executable(test ${SOURCES})
+
+target_link_libraries(test curl curlpp -Lbuild cpp_vk_lib -L../cpp_vk_lib/dependencies/simdjson simdjson)
+```
+
 
 ## Creating CMakeLists
 Here is example CMake script to make bot and library work together:
